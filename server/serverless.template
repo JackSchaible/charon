@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: Steam Wishlist API This template is partially managed by Amazon.Lambda.Annotations (v1.7.0.0).
 Resources:
@@ -10,11 +10,11 @@ Resources:
       MemorySize: 256
       Timeout: 10
       Events:
-        AuthPost:
+        CatchAll:
           Type: Api
           Properties:
-            Path: /auth
-            Method: post
+            Path: /auth/{proxy+}
+            Method: any
   SyncWishlistFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -23,10 +23,11 @@ Resources:
       MemorySize: 512
       Timeout: 60
       Events:
-        ScheduledSync:
-          Type: Schedule
+        CatchAll:
+          Type: Api
           Properties:
-            Schedule: rate(6 hours)
+            Path: /sync/{proxy+}
+            Method: any
   ApiFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -35,8 +36,8 @@ Resources:
       MemorySize: 256
       Timeout: 10
       Events:
-        CrudAPI:
+        CatchAll:
           Type: Api
           Properties:
-            Path: /api
-            Method: post
+            Path: /api/{proxy+}
+            Method: any
