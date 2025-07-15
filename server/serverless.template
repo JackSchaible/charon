@@ -5,7 +5,7 @@ Resources:
   AuthFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: API.AuthFunction::FunctionHandler
+      Handler: API::AuthFunction::FunctionHandler
       Runtime: dotnet8
       MemorySize: 256
       Timeout: 10
@@ -18,7 +18,7 @@ Resources:
   SyncWishlistFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: API.SyncWishlistFunction::FunctionHandler
+      Handler: API::SyncWishlistFunction::FunctionHandler
       Runtime: dotnet8
       MemorySize: 512
       Timeout: 60
@@ -31,7 +31,7 @@ Resources:
   ApiFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: API.ApiFunction::FunctionHandler
+      Handler: API::ApiFunction::FunctionHandler
       Runtime: dotnet8
       MemorySize: 256
       Timeout: 10
