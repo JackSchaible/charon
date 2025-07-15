@@ -1,9 +1,9 @@
-namespace API.Functions;
-
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
+namespace API.Functions;
+
 public class AuthFunction
 {
     public async Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyRequest request, ILambdaContext context)
