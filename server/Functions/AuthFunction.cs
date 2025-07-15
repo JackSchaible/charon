@@ -1,8 +1,7 @@
+namespace API.Functions;
+
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
-
-[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
-namespace API.Functions;
 
 public class AuthFunction
 {
@@ -20,7 +19,7 @@ public class AuthFunction
                     { "Content-Type", "text/plain" }
                 }
             };
-        
+
         // TODO: Handle other API routes here
 
         return await Task.FromResult(new APIGatewayProxyResponse
