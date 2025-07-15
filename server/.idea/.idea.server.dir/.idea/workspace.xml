@@ -7,30 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cedc64f-3620-4151-8a63-5d32d5d8290e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/.config/project-config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/backend-config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/function/steamauth/amplify.state" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/function/steamauth/custom-policies.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/function/steamauth/function-parameters.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/function/steamauth/src/event.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/function/steamauth/src/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/function/steamauth/src/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/function/steamauth/src/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/function/steamauth/src/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/function/steamauth/steamauth-cloudformation-template.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/tags.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/types/amplify-dependent-resources-ref.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/cli.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/hooks/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/team-provider-info.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/schema.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/db.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/types.ts" beforeDir="false" />
-    </list>
+    <list default="true" id="9cedc64f-3620-4151-8a63-5d32d5d8290e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,23 +32,27 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2zvV4BPsD70iGVr04mwQ1ieIIa6" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="API" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -101,6 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1752611341118</updated>
       <workItem from="1752611342489" duration="673000" />
+      <workItem from="1752612473659" duration="620000" />
     </task>
     <servers />
   </component>
