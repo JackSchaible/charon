@@ -3,6 +3,7 @@ namespace API.Functions;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
 
+[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 public class ApiFunction
 {
     public async Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyRequest request, ILambdaContext context)
@@ -19,7 +20,7 @@ public class ApiFunction
                     { "Content-Type", "text/plain" }
                 }
             };
-        
+
         // TODO: Handle other API routes here
 
         return await Task.FromResult(new APIGatewayProxyResponse

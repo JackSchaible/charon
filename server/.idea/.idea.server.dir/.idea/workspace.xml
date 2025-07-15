@@ -7,7 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cedc64f-3620-4151-8a63-5d32d5d8290e" name="Changes" comment="" />
+    <list default="true" id="9cedc64f-3620-4151-8a63-5d32d5d8290e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Functions/ApiFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/ApiFunction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Functions/AuthFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/AuthFunction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Functions/WishlistSyncFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/WishlistSyncFunction.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1752611341118</updated>
       <workItem from="1752611342489" duration="673000" />
-      <workItem from="1752612473659" duration="2064000" />
+      <workItem from="1752612473659" duration="2752000" />
     </task>
     <servers />
   </component>
