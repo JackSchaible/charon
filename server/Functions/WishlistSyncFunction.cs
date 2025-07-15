@@ -9,7 +9,7 @@ public class WishlistSyncFunction
     {
         context.Logger.LogLine($"Received request: {request.HttpMethod} {request.Path}");
 
-        if (request.Path == "/api/ping")
+        if (request.Path == "/wishlist/ping")
             return new APIGatewayProxyResponse
             {
                 StatusCode = 200,
