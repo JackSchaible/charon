@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-server-dev-752cf-authRole",
+      "UnauthRoleArn": "arn:aws:iam::657164771317:role/amplify-server-dev-752cf-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::657164771317:role/amplify-server-dev-752cf-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-server-dev-752cf-deployment",
+      "UnauthRoleName": "amplify-server-dev-752cf-unauthRole",
+      "StackName": "amplify-server-dev-752cf",
+      "StackId": "arn:aws:cloudformation:us-west-2:657164771317:stack/amplify-server-dev-752cf/e56782a0-6141-11f0-900c-06d4b6ff6cd3",
+      "AmplifyAppId": "d3pao2dz9vw4am"
+    },
+    "categories": {
+      "function": {
+        "steamauth": {}
+      }
+    }
+  }
+}
