@@ -36,6 +36,4 @@ jobs:
             --region $AWS_REGION \
             --s3-bucket $AWS_BUCKET \
             --s3-prefix charon-backend \
-            --template serverless.template \
-            --confirm-changeset \
-            --capabilities CAPABILITY_IAM
+            --template serverless.template
