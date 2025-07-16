@@ -8,9 +8,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cedc64f-3620-4151-8a63-5d32d5d8290e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Functions/ApiFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/ApiFunction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/auth/callback/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/auth/callback/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/components/SteamLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/components/SteamLogin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.server.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.server.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/API.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Functions/AuthFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/AuthFunction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Functions/WishlistSyncFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/WishlistSyncFunction.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,19 +50,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="API" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -86,7 +92,8 @@
       <option name="presentableId" value="Default" />
       <updated>1752611341118</updated>
       <workItem from="1752611342489" duration="673000" />
-      <workItem from="1752612473659" duration="3127000" />
+      <workItem from="1752612473659" duration="5568000" />
+      <workItem from="1752626211785" duration="1958000" />
     </task>
     <servers />
   </component>

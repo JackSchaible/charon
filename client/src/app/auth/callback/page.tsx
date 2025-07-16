@@ -23,26 +23,20 @@ export default function AuthCallback() {
   useEffect(() => {
     const handleCallback = async () => {
       try {
-        // Get all URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const apiEndpoint =
-          process.env.NEXT_PUBLIC_API_URL ||
-          "https://your-api-gateway-url.amazonaws.com/dev";
+        // Check if we got user data directly from URL params (from our backend redirect)
+        const userParam = searchParams.get("user");
+        const errorParam = searchParams.get("error");
 
-        // Forward all parameters to the callback endpoint
-        const response = await fetch(
-          `${apiEndpoint}/auth/steam/callback?${urlParams.toString()}`
-        );
-
-        if (!response.ok) {
-          throw new Error(`Authentication failed: ${response.status}`);
+        if (errorParam) {
+          throw new Error(decodeURIComponent(errorParam));
         }
 
-        const data = await response.json();
+        if (userParam) {
+          // Parse user data from URL parameter
+          const userData = JSON.parse(decodeURIComponent(userParam));
 
-        if (data.user) {
           // Store user data in localStorage
-          localStorage.setItem("steam_user", JSON.stringify(data.user));
+          localStorage.setItem("steam_user", JSON.stringify(userData));
           setStatus("success");
 
           // Redirect to home page after a short delay
@@ -50,7 +44,7 @@ export default function AuthCallback() {
             router.push("/");
           }, 2000);
         } else {
-          throw new Error("No user data received");
+          throw new Error("No user data received from authentication");
         }
       } catch (error) {
         console.error("Authentication error:", error);
@@ -62,7 +56,7 @@ export default function AuthCallback() {
     };
 
     handleCallback();
-  }, [router]);
+  }, [router, searchParams]);
 
   if (status === "loading") {
     return (
