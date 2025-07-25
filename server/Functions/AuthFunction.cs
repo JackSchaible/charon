@@ -8,7 +8,7 @@ using System.Text.Json;
 using Amazon.Lambda.Model;
 using Entities;
 using Repositories;
-using Environment = System.Environment;
+using Environment = Environment;
 
 public class AuthFunction
 {
@@ -19,21 +19,20 @@ public class AuthFunction
     private readonly AmazonLambdaClient _lambdaClient;
     private readonly string? _steamApiKey;
     private readonly string? _baseUrl;
-    private readonly string? _dbCxnString;
     private readonly string? _syncFunctionName;
+    private readonly string? _dbConnectionString;
 
     public AuthFunction()
     {
         HttpClient httpClient = new HttpClient();
         _steamAuthService = new SteamAuthService(httpClient);
 
-        string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("CONNECTION_STRING environment variable is not set");
-        _userRepository = new UserRepository(connectionString);
-        _jobRepository = new JobRepository(connectionString);
+        _dbConnectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("CONNECTION_STRING environment variable is not set");
+        _userRepository = new UserRepository(_dbConnectionString);
+        _jobRepository = new JobRepository(_dbConnectionString);
 
         _steamApiKey = Environment.GetEnvironmentVariable("STEAM_API_KEY") ?? throw new InvalidOperationException("STEAM_API_KEY environment variable is not set");
         _baseUrl = Environment.GetEnvironmentVariable("BASE_URL") ?? throw new InvalidOperationException("BASE_URL environment variable is not set");
-        _dbCxnString = Environment.GetEnvironmentVariable("DB_CXN_STRING") ?? throw new InvalidOperationException("DB_CXN_STRING environment variable is not set");
         _syncFunctionName = Environment.GetEnvironmentVariable("SYNC_FUNCTION_NAME") ?? "WishlistSyncFunction";
 
         string jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET") ?? throw new InvalidOperationException("JWT_SECRET environment variable is not set");
@@ -205,7 +204,7 @@ public class AuthFunction
             };
         }
 
-        if (string.IsNullOrWhiteSpace(_dbCxnString))
+        if (string.IsNullOrWhiteSpace(_dbConnectionString))
         {
             context.Logger.LogLine("DB_CXN_STRING environment variable not set");
             string errorUrl = $"{returnUrl}/callback?error={Uri.EscapeDataString("Database connection string not configured")}";
@@ -219,7 +218,7 @@ public class AuthFunction
             };
         }
 
-        User? user = await _steamAuthService.GetSteamUserInfoAsync(steamId, _steamApiKey, _dbCxnString, _userRepository);
+        User? user = await _steamAuthService.GetSteamUserInfoAsync(steamId, _steamApiKey, _dbConnectionString, _userRepository);
         if (user == null)
         {
             string errorUrl = $"{returnUrl}/callback?error={Uri.EscapeDataString("Failed to retrieve user information")}";
