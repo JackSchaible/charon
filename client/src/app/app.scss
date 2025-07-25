@@ -1,0 +1,39 @@
+/* Global styles for the app */
+* {
+  user-select: none; /* Prevent text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Allow text selection for input fields and text content that should be selectable */
+input,
+textarea,
+[contenteditable="true"] {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+/* Ensure interactive elements have pointer cursor */
+button,
+a,
+[role="button"],
+.cursor-pointer,
+.group {
+  cursor: pointer;
+}
+
+/* Disable pointer events for loading states */
+button:disabled,
+.disabled {
+  cursor: not-allowed;
+}
+
+/* Hover states for better UX */
+button:hover:not(:disabled),
+a:hover,
+[role="button"]:hover {
+  cursor: pointer;
+}

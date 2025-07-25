@@ -1,0 +1,42 @@
+<header
+  *ngIf="user$ | async as user"
+  class="relative z-20 px-6 py-4 bg-black/20 backdrop-blur-sm border-b border-white/10"
+>
+  <nav class="container mx-auto flex items-center justify-between">
+    <!-- Logo/Title -->
+    <a routerLink="/" class="flex items-center space-x-3 group cursor-pointer">
+      <span class="text-2xl text-cyan-400">🎮</span>
+      <div
+        class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent"
+      >
+        Steam Wishlist Manager
+      </div>
+    </a>
+
+    <!-- User Profile Section -->
+    <div class="flex items-center space-x-4">
+      <!-- User Avatar and Info -->
+      <div class="flex items-center space-x-3">
+        <img
+          [src]="user.AvatarUrl"
+          [alt]="user.Username"
+          class="w-10 h-10 rounded-full border-2 border-white/30 shadow-lg"
+        />
+        <div class="hidden sm:block">
+          <p class="text-white font-medium text-sm">{{ user.Username }}</p>
+          <p class="text-slate-400 text-xs">Steam ID: {{ user.SteamId }}</p>
+        </div>
+      </div>
+
+      <!-- Logout Button -->
+      <button
+        (click)="logout()"
+        class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white font-medium text-sm rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-transparent cursor-pointer"
+        title="Sign Out"
+      >
+        <span class="hidden sm:inline">Sign Out</span>
+        <span class="sm:hidden text-sm">🚪</span>
+      </button>
+    </div>
+  </nav>
+</header>

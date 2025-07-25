@@ -1,0 +1,25 @@
+<main
+  class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white relative overflow-hidden"
+>
+  <!-- Animated background elements -->
+  <div class="absolute inset-0 opacity-10">
+    <div
+      class="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500 rounded-full blur-3xl animate-pulse"
+    ></div>
+    <div
+      class="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse delay-1000"
+    ></div>
+    <div
+      class="absolute bottom-1/4 left-1/2 w-64 h-64 bg-indigo-500 rounded-full blur-3xl animate-pulse delay-500"
+    ></div>
+  </div>
+
+  <!-- Header (only shows when user is logged in) -->
+  <ch-app-header />
+
+  <!-- Main content -->
+  <div class="relative z-10 min-h-screen flex flex-col p-8">
+    <router-outlet />
+    <ch-app-footer />
+  </div>
+</main>

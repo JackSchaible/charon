@@ -1,0 +1,61 @@
+<div class="min-h-screen flex flex-col items-center justify-center p-8">
+  <!-- Main content -->
+  <div class="relative z-10 flex flex-col items-center space-y-8">
+    <!-- Loading state -->
+    <div
+      *ngIf="isLoading$ | async"
+      class="flex flex-col items-center space-y-6"
+    >
+      <div
+        class="w-20 h-20 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin"
+      ></div>
+      <h1 class="text-3xl font-bold text-white">Processing Steam Login...</h1>
+      <p class="text-slate-300 text-lg text-center max-w-md">
+        We're securely completing your authentication with Steam. This should
+        only take a moment.
+      </p>
+    </div>
+
+    <!-- Error state -->
+    <div
+      *ngIf="error$ | async as error"
+      class="flex flex-col items-center space-y-6 max-w-lg"
+    >
+      <div
+        class="w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center border-2 border-red-500"
+      >
+        <span class="text-red-400 text-3xl">⚠️</span>
+      </div>
+      <h1 class="text-3xl font-bold text-red-400">Authentication Failed</h1>
+      <div
+        class="p-6 bg-red-900/30 backdrop-blur-sm border border-red-500/50 rounded-2xl shadow-2xl"
+        role="alert"
+      >
+        <p class="text-red-200 text-center">{{ error }}</p>
+      </div>
+      <button
+        (click)="goToLogin()"
+        class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors duration-200 cursor-pointer"
+        type="button"
+      >
+        Try Again
+      </button>
+    </div>
+
+    <!-- Success state (briefly shown before redirect) -->
+    <div
+      *ngIf="(isLoading$ | async) === false && (error$ | async) === null"
+      class="flex flex-col items-center space-y-6"
+    >
+      <div
+        class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center border-2 border-green-500"
+      >
+        <span class="text-green-400 text-3xl">✅</span>
+      </div>
+      <h1 class="text-3xl font-bold text-green-400">Login Successful!</h1>
+      <p class="text-slate-300 text-lg text-center">
+        Redirecting to your wishlist...
+      </p>
+    </div>
+  </div>
+</div>

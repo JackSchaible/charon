@@ -1,0 +1,156 @@
+<!-- Main content -->
+<div class="flex-1 flex flex-col items-center justify-center">
+  <div class="max-w-6xl mx-auto text-center">
+    <!-- Main Title with enhanced styling (only show when not logged in) -->
+    <section class="mb-12">
+      <h1
+        class="text-7xl md:text-8xl font-black mb-4 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-2xl animate-fade-in"
+      >
+        Steam Wishlist Manager
+      </h1>
+      <div
+        class="w-32 h-1 bg-gradient-to-r from-cyan-400 to-purple-600 mx-auto rounded-full"
+      ></div>
+    </section>
+
+    <!-- Enhanced Description -->
+    <section class="mb-16">
+      <p
+        class="text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light"
+      >
+        Have you ever felt overwhelmed by your Steam wishlist? Got a
+        notification that a game you wanted is on sale, but you can't remember
+        why you wanted it? Transform your Steam wishlist into an organized
+        collection.
+        <span class="text-cyan-400 font-medium">Tag</span>,
+        <span class="text-blue-400 font-medium">describe</span>, and
+        <span class="text-purple-400 font-medium">prioritize</span>
+        your gaming dreams.
+      </p>
+    </section>
+
+    <!-- Error Message with better styling -->
+    <aside *ngIf="error$ | async as error" class="mb-12 max-w-lg mx-auto">
+      <div
+        class="p-6 bg-red-900/30 backdrop-blur-sm border border-red-500/50 rounded-2xl shadow-2xl"
+        role="alert"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center"
+          >
+            <span class="text-white text-xs">!</span>
+          </div>
+          <p class="text-red-200 font-medium">{{ error }}</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Loading state while checking authentication or redirecting -->
+    <section *ngIf="isLoading$ | async" class="mb-16">
+      <div class="flex flex-col items-center space-y-6">
+        <div
+          class="w-16 h-16 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin"
+        ></div>
+        <p class="text-slate-300 text-lg">Checking authentication...</p>
+      </div>
+    </section>
+
+    <!-- Login Section -->
+    <section *ngIf="(isLoading$ | async) === false" class="mb-16">
+      <div class="flex flex-col items-center">
+        <div
+          class="mb-8 p-2 bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10"
+        >
+          <button
+            (click)="login()"
+            [disabled]="isLoading$ | async"
+            class="relative group transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed p-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-2xl cursor-pointer"
+            type="button"
+            [attr.aria-label]="
+              (isLoading$ | async) ? 'Signing in...' : 'Sign in through Steam'
+            "
+          >
+            <img
+              src="/img/sits_01.png"
+              alt="Sign in through Steam"
+              class="transition-opacity group-hover:opacity-90"
+            />
+            <div
+              *ngIf="isLoading$ | async"
+              class="absolute inset-0 flex items-center justify-center bg-black/50 rounded-2xl"
+            >
+              <div
+                class="w-8 h-8 border-3 border-white border-t-transparent rounded-full animate-spin"
+                aria-label="Loading"
+              ></div>
+            </div>
+
+            <!-- Animated border -->
+            <div
+              class="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 p-0.5 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              <div class="w-full h-full bg-blue-700 rounded-2xl"></div>
+            </div>
+          </button>
+        </div>
+
+        <p class="text-slate-400 text-lg font-medium">
+          Connect with your Steam account to get started
+        </p>
+      </div>
+    </section>
+
+    <!-- Enhanced Features Section -->
+    <section class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <article
+        class="p-8 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-white/15 cursor-default"
+      >
+        <div
+          class="mb-6 w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300"
+        >
+          <span class="text-white text-2xl">🏷️</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-4 text-cyan-400">Smart Tagging</h3>
+        <p class="text-slate-300 leading-relaxed">
+          Create intelligent tags to categorize your games by genre, mood,
+          multiplayer status, or any custom criteria that matters to you.
+        </p>
+      </article>
+
+      <article
+        class="p-8 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-white/15 cursor-default"
+      >
+        <div
+          class="mb-6 w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300"
+        >
+          <span class="text-white text-2xl">📝</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-4 text-purple-400">
+          Rich Descriptions
+        </h3>
+        <p class="text-slate-300 leading-relaxed">
+          Add detailed notes about why each game caught your eye, when you plan
+          to play it, or remind yourself of special sales and reviews.
+        </p>
+      </article>
+
+      <article
+        class="p-8 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-white/15 cursor-default"
+      >
+        <div
+          class="mb-6 w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300"
+        >
+          <span class="text-white text-2xl">📊</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-4 text-green-400">
+          Priority Management
+        </h3>
+        <p class="text-slate-300 leading-relaxed">
+          Never lose track of your gaming goals. Organize by priority, track
+          price changes, and make informed decisions about your next purchase.
+        </p>
+      </article>
+    </section>
+  </div>
+</div>
