@@ -1,6 +1,6 @@
 namespace API.Models;
 
-public class SteamResponse
+public class GetPlayersResponse
 {
     public List<SteamPlayer>? Players { get; set; }
 }

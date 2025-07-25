@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using Entities;
 using Models;
+using Repositories;
 
 public partial class SteamAuthService(HttpClient httpClient)
 {
@@ -26,7 +27,8 @@ public partial class SteamAuthService(HttpClient httpClient)
         return $"{SteamOpenIdEndpoint}?{queryString}";
     }
 
-    public async Task<(bool IsValid, string? SteamId)> ValidateAuthenticationAsync(Dictionary<string, string> parameters)
+    public async Task<(bool IsValid, string? SteamId)> ValidateAuthenticationAsync(
+        Dictionary<string, string> parameters)
     {
         try
         {
@@ -47,9 +49,7 @@ public partial class SteamAuthService(HttpClient httpClient)
             if (!parameters.TryGetValue("openid.identity", out string? identity)) return (false, null);
 
             Match steamIdMatch = DigitRegex().Match(identity);
-            return steamIdMatch.Success ?
-                (true, steamIdMatch.Groups[1].Value) :
-                (false, null);
+            return steamIdMatch.Success ? (true, steamIdMatch.Groups[1].Value) : (false, null);
         }
         catch
         {
@@ -57,35 +57,31 @@ public partial class SteamAuthService(HttpClient httpClient)
         }
     }
 
-    public async Task<User?> GetSteamUserInfoAsync(string steamId, string apiKey)
+    public async Task<User?> GetSteamUserInfoAsync(string steamId, string steamApiKey, string dbCxnString, UserRepository userRepository)
     {
-        try
+        SteamPlayer? player = await SteamApiService.SyncUserWithSteamAsync(steamId);
+
+        User? existingUser = await userRepository.GetUserBySteamIdAsync(steamId);
+        if (existingUser != null)
         {
-            string url = $"{SteamApiBaseUrl}/ISteamUser/GetPlayerSummaries/v0002/?key={apiKey}&steamids={steamId}";
-            HttpResponseMessage response = await httpClient.GetAsync(url);
-
-            if (!response.IsSuccessStatusCode)
-                return null;
-
-            string jsonContent = await response.Content.ReadAsStringAsync();
-            SteamApiResponse? steamResponse = JsonSerializer.Deserialize<SteamApiResponse>(jsonContent);
-
-            SteamPlayer? player = steamResponse?.Response?.Players?.FirstOrDefault();
-            if (player == null)
-                return null;
-
-            return new User
+            // Update existing user
+            existingUser.Username = player.personaname;
+            existingUser.AvatarUrl = player.avatarmedium;
+            existingUser.ProfileUrl = player.profileurl;
+            return await userRepository.UpdateUserAsync(existingUser);
+        }
+        else
+        {
+            // Create new user
+            User newUser = new()
             {
                 SteamId = steamId,
-                Username = player.PersonaName,
-                AvatarUrl = player.AvatarFull,
-                ProfileUrl = player.ProfileUrl,
+                Username = player.personaname,
+                AvatarUrl = player.avatarmedium,
+                ProfileUrl = player.profileurl,
                 CreatedAt = DateTime.UtcNow
             };
-        }
-        catch
-        {
-            return null;
+            return await userRepository.CreateUserAsync(newUser);
         }
     }
 

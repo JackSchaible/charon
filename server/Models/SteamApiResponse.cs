@@ -1,6 +1,6 @@
 namespace API.Models;
 
-public class SteamApiResponse
+public class SteamApiResponse<TSteamResponse>
 {
-    public SteamResponse? Response { get; set; }
+    public TSteamResponse? Response { get; set; }
 }

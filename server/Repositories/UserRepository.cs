@@ -4,6 +4,15 @@ using Entities;
 using Dapper;
 using Microsoft.Data.SqlClient;
 
+public interface IUserRepository
+{
+    Task<User?> GetUserBySteamIdAsync(string steamId);
+    Task<User?> GetUserByIdAsync(int userId);
+    Task<User> CreateUserAsync(User user);
+    Task<User> UpdateUserAsync(User user);
+    Task<User> UpsertUserAsync(User user);
+}
+
 public class UserRepository(string connectionString) : IUserRepository
 {
     private readonly string _connectionString =
@@ -28,10 +37,22 @@ public class UserRepository(string connectionString) : IUserRepository
                                          WHERE Id = @Id
                                          """;
 
+    private const string GetUserByIdSql = """
+                                         SELECT Id, SteamId, CreatedAt, AvatarUrl, ProfileUrl, Username
+                                         FROM Users 
+                                         WHERE Id = @Id
+                                         """;
+
     public async Task<User?> GetUserBySteamIdAsync(string steamId)
     {
         await using SqlConnection connection = new SqlConnection(_connectionString);
         return await connection.QueryFirstOrDefaultAsync<User>(GetUserSql, new { SteamId = steamId });
+    }
+
+    public async Task<User?> GetUserByIdAsync(int id)
+    {
+        await using SqlConnection connection = new SqlConnection(_connectionString);
+        return await connection.QueryFirstOrDefaultAsync<User>(GetUserByIdSql, new { Id = id });
     }
 
     public async Task<User> CreateUserAsync(User user)

@@ -19,5 +19,7 @@
     <PackageReference Include="System.Text.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.2" />
     <PackageReference Include="Dapper" Version="2.1.24" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />
+    <PackageReference Include="AWSSDK.Lambda" Version="3.7.108" />
   </ItemGroup>
 </Project>
